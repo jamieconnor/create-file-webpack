@@ -24,10 +24,8 @@ var CreateFilePlugin = (function () {
   }
 
   function _createFile(compStats, filePath, fileName, content) {
-    return () => {
-      const fullPath = path.join(filePath, fileName);
-      write.sync(fullPath, content.replace('[hash]', compStats.hash));
-    }
+    const fullPath = path.join(filePath, fileName);
+    write.sync(fullPath, content.replace('[hash]', compStats.hash));
   }
 
   CreateFilePlugin.prototype.apply = function (compiler) {
